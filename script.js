@@ -11,6 +11,60 @@
 //
 // * Gather user input with prompt's and confirm's
 
+var upperChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var lowerChar = "abcdefghijklmnopqrstuvwxyz";
+var numChar = "0123456789";
+var specialChar = "!\"#$%&'()*+,-./:;<=>?@[]^_{}~";
+
+function generatePassword() {
+
+  document.querySelector("#password").textContent = "";
+
+  var length = prompt("Enter the length you wish for your password. (Between 8 - 128 characters)");
+  if (length < 8 || length > 128 || length === " ") {
+    alert("Please choose a password length between 8 and 128.");
+  }
+
+  var uppercase = confirm("Would you like to include uppercase letters?");
+  var lowercase = confirm("Would you like to include lowercase letters?");
+  var numbers = confirm("Would you like to include numbers?");
+  var special = confirm("Would you like to include special characters?");
+
+  if (uppercase === false && lowercase === false && numbers === false && special === false) {
+    alert("Please select at least one criteria.");
+  }
+
+  var pool = [];
+
+  if (uppercase) pool.push("uppercase");
+  if (lowercase) pool.push("lowercase");
+  if (numbers) pool.push("numbers");
+  if (special) pool.push("special");
+
+  var password = "";
+
+  for (var i = 0; i <= length; i++) {
+    var groupIndex = Math.floor(Math.random * pool.length)
+    var group = null;
+
+    if (pool[groupIndex] === "uppercase") {
+      group = uppercase;
+    }
+    if (pool[groupIndex] === "lowercase") {
+      group = lowercase;
+    }
+    if (pool[groupIndex] === "numbers") {
+      group = numbers;
+    }
+    if (pool[groupIndex] === "special") {
+      group = special;
+    }
+
+
+  }
+}
+
+
 ///////////////////////////////////////////////////////////////////////
 // DO NOT TOUCH THIS CODE
 //
